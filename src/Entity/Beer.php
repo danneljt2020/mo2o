@@ -6,11 +6,47 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BeerRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\BeerByFood;
 
 /**
  * @ApiResource(
  *     collectionOperations={"get"},
- *     itemOperations={"get"}
+ *     itemOperations={
+ *         "get",
+ *         "get_by_food" = {
+ *              "method" = "GET",
+ *              "pagination_enabled" = true,
+ *              "path" = "/food/search/{food}",
+ *              "controller" = BeerByFood::class,
+ *              "read"=false,
+ *              "openapi_context" = {
+ *              "parameters" = {
+ *                  {
+ *                      "name" = "food",
+ *                      "in" = "path",
+ *                      "description" = "Enter the food for search",
+ *                      "type" = "string",
+ *                      "required" = true,
+ *                      "example"= "chicken",
+ *                  },{
+ *                      "name" = "page",
+ *                      "in" = "query",
+ *                      "description" = "Enter the page",
+ *                      "type" = "string",
+ *                      "required" = false,
+ *                      "example"= "1",
+ *                  },{
+ *                      "name" = "per_page",
+ *                      "in" = "query",
+ *                      "description" = "Enter number of items per page",
+ *                      "type" = "string",
+ *                      "required" = false,
+ *                      "example"= "25",
+ *                  },
+ *           },
+ *         },
+ *       }
+ *     },
  *     normalizationContext={"groups"={"beer:read"}},
  * )
  * @ORM\Entity(repositoryClass=BeerRepository::class)

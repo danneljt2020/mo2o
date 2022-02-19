@@ -7,26 +7,24 @@ use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BeerController extends AbstractController
 {
 
-
     /**
      * @param $id
      * @return JsonResponse
-     * @Route("/api/beer/{id}", name="beer_by_id", methods={"GET"})
+     * @Route("/api/beers/{id}", name="beer_by_id", methods={"GET"})
      * @throws GuzzleException
      */
     public function getById($id): JsonResponse
     {
         $response = new JsonResponse(['status' => Response::HTTP_NOT_FOUND, 'message' => "not found", 'data' => []]);
 
-        if(is_int($id) or intval($id) > 1){
+        if (is_int($id) or intval($id) > 1) {
             $array_data = PunkApi::getBeerById($id);
-        }else{
+        } else {
             $param_id_error = array(
                 "location" => "Path",
                 "param" => "id",
