@@ -13,9 +13,6 @@ use GuzzleHttp\Exception\ClientException;
 class PunkApi
 {
     const API_ENDPOINT = 'https://api.punkapi.com/v2/beers';
-    //https://api.punkapi.com/v2/beers?food=chocolate&ibu_lt=30 trae solo lo de chocolate path 1
-    //https://api.punkapi.com/v2/beers?food=chocolate&page=2&per_page=10  con paginado
-    //https://api.punkapi.com/v2/beers?food=chocolate&ids=96 get by id
 
     /**
      * @param $id
