@@ -11,6 +11,7 @@ class ErrorController extends AbstractController
 {
     /**
      * @Route("/api/error", name="error")
+     * @return Response
      */
     public function errorHandler(): Response
     {

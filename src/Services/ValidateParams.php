@@ -19,9 +19,9 @@ class ValidateParams
             "page" => "success",
             "per_page" => "success",
         );
-
         $page = intval($page);
         $per_page = intval($per_page);
+
         if (!is_int($page) or $page < 1) {
             $respond["valid"] = false;
             $respond["page"] = "error";
@@ -30,6 +30,7 @@ class ValidateParams
             $respond["valid"] = false;
             $respond["per_page"] = "error";
         }
+
         return $respond;
 
     }

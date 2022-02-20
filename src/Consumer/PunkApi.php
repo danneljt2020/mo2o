@@ -38,7 +38,6 @@ class PunkApi
     }
 
 
-
     /**
      * @param $id
      * @return array|mixed
@@ -58,6 +57,7 @@ class PunkApi
 
         return $data;
     }
+
 
     /**
      * @param string $food
