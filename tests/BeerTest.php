@@ -106,7 +106,7 @@ class BeerTest extends ApiTestCase
     public function testGetBeerByFoodNoPagination(): void
     {
         $client = new Client(['base_uri' => 'http://127.0.0.1:8000']);
-        $respond = $client->request('GET', '/api/food/search/chicken');
+        $respond = $client->request('GET', '/api/beers/chicken/food');
 
         $array_respond = json_decode($respond->getBody()->getContents(), true);
         $array_beer = $array_respond['data'][0];
@@ -123,7 +123,7 @@ class BeerTest extends ApiTestCase
     public function testGetBeerByFoodWithPagination(): void
     {
         $client = new Client(['base_uri' => 'http://127.0.0.1:8000']);
-        $respond = $client->request('GET', '/api/food/search/chicken',
+        $respond = $client->request('GET', '/api/beers/chicken/food',
             ['query' => ['page' => 1, 'per_page' => 30]]);
 
         $array_respond = json_decode($respond->getBody()->getContents(), true);
@@ -142,7 +142,7 @@ class BeerTest extends ApiTestCase
     public function testGetBeerByFoodWithIncorrectPagination(): void
     {
         $client = new Client(['base_uri' => 'http://127.0.0.1:8000']);
-        $respond = $client->request('GET', '/api/food/search/chicken',
+        $respond = $client->request('GET', '/api/beers/chicken/food',
             ['query' => ['page' => -1, 'per_page' => "asd"]]);
 
         $array_respond = json_decode($respond->getBody()->getContents(), true);
