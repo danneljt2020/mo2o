@@ -16,7 +16,7 @@ use App\Controller\BeerByFood;
  *         "get_by_food" = {
  *              "method" = "GET",
  *              "pagination_enabled" = true,
- *              "path" = "/food/search/{food}",
+ *              "path" = "/beers/{food}/food",
  *              "controller" = BeerByFood::class,
  *              "read"=false,
  *              "openapi_context" = {
